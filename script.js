@@ -1,8 +1,23 @@
 _CONST_BASE='';
 // promise object
+// Function to get a specific cookie by name
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null; // Return null if the cookie is not found
+}
 
-// Clear the concole on every refresh
-console.clear();
+// Retrieve the ULID from the cookie
+const userULID = getCookie('userULID');
+
+// Display the ULID if found
+if (userULID) {
+    console.log('User ULID:', userULID);
+} else {
+    console.log('No ULID found.');
+}
+
 // set the body to full height
 // document.body.style.height = `${innerHeight}px`
 
